@@ -9,9 +9,11 @@
                 var currentPopup;
                 var htmlEl = angular.element(document.querySelector('html'));
                 htmlEl.on('click', function (event) {
-                    if (event.target.nodeName === 'HTML') {
+                    if (event.target.nodeName === 'HTML' || event.target.className.indexOf("backdrop") > -1) {
                         if (currentPopup) {
-                            currentPopup.close();
+                            try {
+                                currentPopup.close();
+                            } catch ( e ) {}
                         }
                     }
                 });
